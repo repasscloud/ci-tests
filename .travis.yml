@@ -1,0 +1,20 @@
+language: shell
+os: windows
+arch:
+- amd64
+branches:
+  only:
+  - master
+jobs:
+  include:
+    - stage: SysInfo
+      script: powershell -Command "systeminfo"
+    - stage: Docker
+      script: |
+        docker info
+            docker info
+            docker run hello-world:nanoserver-1809
+    - stage: VLC
+      script: |
+        choco install vlc
+        Get-WmiObject -Class Win32_Product | Where-Object {$_.Name -like "*Video*"} | Select-Object Name,Version
