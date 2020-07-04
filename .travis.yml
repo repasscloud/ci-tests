@@ -17,4 +17,4 @@ jobs:
     - stage: VLC
       script: |
         choco install vlc
-        Get-WmiObject -Class Win32_Product | Where-Object {$_.Name -like "*Video*"} | Select-Object Name,Version
+        Get-WmiObject -Class Win32_Product | Where-Object {$_.Name -like "*V*"} | Select-Object Name,Version
