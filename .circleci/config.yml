@@ -22,7 +22,7 @@ jobs:
           shell: powershell.exe
           command: |
             choco install vlc
-            Get-WmiObject -Class Win32_Product | Where-Object {$_.Name -like "*VLC*"} | Select-Object Name,Version
+            Get-WmiObject -Class Win32_Product | Where-Object {$_.Name -like "*Video*"} | Select-Object Name,Version
       - run:
           name: "List installed apps"
           shell: powershell
