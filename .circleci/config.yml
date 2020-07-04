@@ -20,7 +20,9 @@ jobs:
       - run:
           name: "Install VLC"
           shell: powershell.exe
-          command: choco install vlc
+          command: |
+            choco install vlc
+            Get-WmiObject -Class Win32_Product | Where-Object {$_.Name -like "*VLC*"} | Select-Object Name,Version
       - run:
           name: "List installed apps"
           shell: powershell
