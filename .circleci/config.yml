@@ -21,4 +21,7 @@ jobs:
           name: "Install VLC"
           shell: powershell.exe
           command: choco install vlc
-      
+      - run:
+          name: "List installed apps"
+          shell: powershell
+          command: Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion, Publisher, InstallDate
