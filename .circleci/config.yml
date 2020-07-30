@@ -36,7 +36,7 @@ jobs:
             pwsh.exe -Command {$PSVersionTable}
       - run:
           name: "Test PSCore"
-          shell: pwsh
+          shell: pwsh.exe
           command: $PSVersionTable
 
 workflows:
