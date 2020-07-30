@@ -1,16 +1,20 @@
 version: 2.1
 
 orbs:
-  win: circleci/windows@2.2.0
+  win: circleci/windows@2.4.0
 
 jobs:
-  build:
+  circleci-tests:
+    description: "ci/circleci-tests only for pre-deployment"
     executor:
       name: win/default
       shell: powershell.exe
+    working_directory: C:\circle_ci_build_dir
     steps:
       - checkout
-      - run: systeminfo
+      - run: 
+          name: "System Info"
+          command: systeminfo
       - run:
           name: "Check docker"
           shell: powershell.exe
@@ -24,11 +28,23 @@ jobs:
             choco install vlc
             Get-WmiObject -Class Win32_Product | Where-Object {$_.Name -like "*Video*"} | Select-Object Name,Version
       - run:
-          name: "List installed apps"
-          shell: powershell
-          command: Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion, Publisher, InstallDate
+          name: "install powershell core"
+          command: dotnet tool install --global PowerShell
       - run:
-          name: "App Versions List"
-          shell: powershell.exe
-          command: Get-WmiObject -Class Win32_Product | Select-Object Name, Version
-          
+          name: "pscore version table"
+          command: |
+            pwsh.exe -Command {$PSVersionTable}
+      - run:
+          name: "Test PSCore"
+          shell: pwsh
+          command: $PSVersionTable
+
+workflows:
+  build-deploy:
+    jobs:
+      - circleci-tests: # << the job to conditionally run based on the filter-by-branch-name.
+          filters:
+            branches:
+              only:
+                - master
+                - "ci/circleci-tests"
