@@ -25,16 +25,13 @@ jobs:
           name: "install powershell core"
           command: dotnet tool install --global PowerShell
       - run:
-          name: "Dir C:\Users\circleci\.dotnet\tools"
-          command: dir C:\Users\circleci\.dotnet\tools
+          name: "dir C drive"
+          command: Get-ChildItem -Path 'C:\Users\circleci\.dotnet\tools'
+          shell: powershell.exe
       - run:
           name: "pscore version table"
           command: |
             pwsh.exe -Command {$PSVersionTable}
-      - run:
-          name: "show path"
-          command: $Env:Path
-          shell: powershell.exe
 #      - run:
 #          name: "Test PSCore"
 #          shell: pwsh.exe
