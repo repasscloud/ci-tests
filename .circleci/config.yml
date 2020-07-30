@@ -12,21 +12,15 @@ jobs:
     working_directory: C:\circle_ci_build_dir
     steps:
       - checkout
-      - run: 
-          name: "System Info"
-          command: systeminfo
-      - run:
-          name: "Check docker"
-          shell: powershell.exe
-          command: |
-            docker info
-            docker run hello-world:nanoserver-1809
-      - run:
-          name: "Install VLC"
-          shell: powershell.exe
-          command: |
-            choco install vlc
-            Get-WmiObject -Class Win32_Product | Where-Object {$_.Name -like "*Video*"} | Select-Object Name,Version
+#      - run: 
+#          name: "System Info"
+#          command: systeminfo
+#      - run:
+#          name: "Check docker"
+#          shell: powershell.exe
+#          command: |
+#            docker info
+#            docker run hello-world:nanoserver-1809
       - run:
           name: "install powershell core"
           command: dotnet tool install --global PowerShell
@@ -35,9 +29,13 @@ jobs:
           command: |
             pwsh.exe -Command {$PSVersionTable}
       - run:
-          name: "Test PSCore"
-          shell: pwsh.exe
-          command: $PSVersionTable
+          name: "show path"
+          command: $Env:Path
+          shell: powershell.exe
+#      - run:
+#          name: "Test PSCore"
+#          shell: pwsh.exe
+#          command: $PSVersionTable
 
 workflows:
   build-deploy:
