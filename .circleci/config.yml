@@ -27,7 +27,7 @@ jobs:
       - run:
           name: "This is PWSH"
           command: Write-Output 'This is output'
-          shell: C:\Users\circleci\.dotnet\tools\pwsh.exe
+          shell: C:\\Users\\circleci\\.dotnet\\tools\\pwsh.exe
       - run:
           name: "dir C drive"
           command: Get-ChildItem -Path 'C:\Users\circleci\.dotnet\tools'
