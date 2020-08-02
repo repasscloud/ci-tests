@@ -1,8 +1,11 @@
+Write-Output '============================================================'
 Write-Output "Job Number: $($Env:APPVEYOR_JOB_NUMBER)"
+Write-Output '============================================================'
 Write-Output "Appveyor: $($Env:APPVEYOR)"
+Write-Output '============================================================'
 Write-Output "Build Number: $($Env:APPVEYOR_BUILD_NUMBER)"
+Write-Output '============================================================'
 Write-Output "Build Version: $($Env:APPVEYOR_BUILD_VERSION)"
-
 Write-Output '============================================================'
 Write-Output "Repo Tag: $($Env:APPVEYOR_REPO_TAG)"
 Write-Output "True if build has started by pushed tag; otherwise false"
