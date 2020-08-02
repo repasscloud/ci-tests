@@ -43,6 +43,9 @@ clone_folder: C:\Projects\ci-tests
 # fetch repository as zip archive
 shallow_clone: false                 # default is "false"
 
+# set clone depth
+#clone_depth: 5                      # clone entire repository history if not defined
+
 # this is how to allow failing jobs in the matrix
 matrix:
   fast_finish: true     # set this flag to immediately finish build once one of the jobs fails.
@@ -60,6 +63,7 @@ environment:
     secure: EgLVSzhfEctx0yCxhZCE2v4Or141bwRMrzLs+pyT9x8=
   GITHUB_NAME:
     secure: nd3L/89JuGm9kSnix9hH193TjvElTUlcK9PSHvSkxCc=
+
 install:
   - ps: |
       Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.208 -Force
