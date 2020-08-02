@@ -31,7 +31,7 @@ jobs:
       - run:
           name: "dir C drive"
           command: Get-ChildItem -Path 'C:\Users\circleci\.dotnet\tools'
-          shell: pwsh.exe
+          shell: C:\\Users\\circleci\\.dotnet\\tools\\pwsh.exe
       - run:
           name: "pscore version table"
           command: |
