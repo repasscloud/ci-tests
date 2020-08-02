@@ -84,7 +84,7 @@ build_script:
 #  - ps: ./install.ps1
 
 test_script:
-  - ps: ./ci-tests/appveyor-tests.ps1
+  - ps: ./appveyor-tests.ps1
 
 # on successful build
 on_success:
