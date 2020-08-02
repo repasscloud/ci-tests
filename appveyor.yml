@@ -43,9 +43,6 @@ clone_folder: C:\Projects\ci-tests
 # fetch repository as zip archive
 shallow_clone: false                 # default is "false"
 
-# set clone depth
-#clone_depth: 5                      # clone entire repository history if not defined
-
 # this is how to allow failing jobs in the matrix
 matrix:
   fast_finish: true     # set this flag to immediately finish build once one of the jobs fails.
@@ -63,13 +60,7 @@ environment:
     secure: EgLVSzhfEctx0yCxhZCE2v4Or141bwRMrzLs+pyT9x8=
   GITHUB_NAME:
     secure: nd3L/89JuGm9kSnix9hH193TjvElTUlcK9PSHvSkxCc=
-# APPVEYOR_RDP_PASSWORD:
-#   secure: Ps2KNyw17/1mtAm9/5/miw==
-# scripts that run after cloning repository
 install:
-#  - ps: .\build.ps1   #~> builds the module on the CI server
-#  - ps: .\install.ps1   #~> installs the module locally on the CI server
-#  - ps: Import-Module -Name Get.URLStatusCode  # Imports the module for testing
   - ps: |
       Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.208 -Force
       Install-Module -Name PowerShellGet -Force
@@ -80,6 +71,7 @@ install:
       "Host name:   $($Host.Name)"
 
 build_script:
+  - ps: ./appveyor-tests.ps1
 #  - ps: ./build.ps1
 #  - ps: ./install.ps1
 
