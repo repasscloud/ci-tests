@@ -27,7 +27,7 @@ Write-Output '============================================================'
 Write-Output "Docker Version: $(docker --version)"
 Write-Output '============================================================'
 Write-Output "Run docker build 2016"
-docker build --rm --build-arg version=ltsc2016 --tag adk .
+#docker build --rm --build-arg version=ltsc2016 --tag adk .
 Write-Output '============================================================'
 Write-Output "Run docker build 2019"
 docker build --rm --build-arg version=ltsc2019 --tag adk .
