@@ -14,4 +14,8 @@ RUN Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Confirm:$false -Force
 RUN mkdir C:\rpc
 WORKDIR C:\rpc
 
+# Install required module to get return URL
+RUN Install-Module -Name GetRedirectedUrl `
+    Get-GetRedirectedUrl -Url 'https://go.microsoft.com/fwlink/?linkid=2120254'
+
 CMD [ "$PSVersionTable" ]
