@@ -15,11 +15,11 @@ RUN Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Confirm:$false -Force
 #WORKDIR C:\rpc
 
 # Install required module to get return URL
-#RUN Install-Module -Name GetRedirectedUrl
-#RUN Get-RedirectedURL -Url 'https://go.microsoft.com/fwlink/?linkid=2120254'
 RUN Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.208 -Force
 RUN Install-Module -Name PowerShellGet -Force
 RUN Get-PSRepository
 RUN Get-PackageProvider
+RUN Install-Module -Name GetRedirectedUrl
+RUN Get-RedirectedURL -Url 'https://go.microsoft.com/fwlink/?linkid=2120254'
 
 CMD [ "$PSVersionTable" ]
