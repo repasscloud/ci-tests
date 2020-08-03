@@ -5,7 +5,7 @@ ARG version=ltsc2019
 FROM mcr.microsoft.com/windows/servercore:${version}
 
 # Set PowerShell as default interpreter
-#SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
+SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 # Change Execution policy
 RUN Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Confirm:$false -Force
