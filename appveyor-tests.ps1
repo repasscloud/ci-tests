@@ -24,3 +24,5 @@ Write-Output '============================================================'
 Write-Output "Job Number: $($Env:APPVEYOR_RE_RUN_INCOMPLETE)"
 Write-Output "(True or undefined) - build job started by 'Re-run incomplete' button of from the same API"
 Write-Output '============================================================'
+Write-Output "Docker Version: $($docker --version)"
+Write-Output '============================================================'
